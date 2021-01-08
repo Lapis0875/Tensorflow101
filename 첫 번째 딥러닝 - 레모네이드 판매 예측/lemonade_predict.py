@@ -2,9 +2,13 @@ import tensorflow as tf
 import pandas as pd
 
 # 1. 과거의 데이터를 준비합니다. (레모네이드 판매량 자료 : lemonade.csv)
-data = pd.read_csv('amusement_park_visitors.csv')
+data = pd.read_csv('lemonade.csv')
+print(data.head())
+
+# 독립변수와 종속변수를 분리합니다.
 independent_variable = data[['온도']]
-dependent_variable = data[['방문객']]
+dependent_variable = data[['판매량']]
+print(independent_variable.shape, dependent_variable.shape)
 
 # 2. 모델의 구조를 만듭니다.
 X = tf.keras.layers.Input([1])
@@ -16,4 +20,4 @@ model = tf.keras.models.Model(X, Y)
 model.fit(independent_variable, dependent_variable, epochs=1000)
 
 # 4. 모델을 이용합니다.
-model.predict([[13]])
+model.predict([[15]])
